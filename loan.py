@@ -1,7 +1,6 @@
 # prompt the applicant for their name, credit score, monthly income, and missed payments, and print the output
 def main():
-    name = input("What is your name: ").strip()
-    formatted_name = format_applicant(name)
+    name = input("What is your name: ").strip().title()
     try:
         credit_score = int(input("What is your credit score: "))
         monthly_income = float(input("What is your monthly income: "))
@@ -10,18 +9,12 @@ def main():
         if decision is not None:
             message = get_message(decision)
             print(
-                f"{formatted_name} has a credit score of {credit_score:.0f} with KSH {monthly_income:,.2f} income — {decision}. {message}"
+                f"{name} has a credit score of {credit_score:.0f} with KSH {monthly_income:,.2f} income — {decision}. {message}"
             )
         else:
             return None
     except ValueError:
         pass
-
-
-# return the applicant's name in title case
-def format_applicant(n):
-    n = n.title()
-    return n
 
 
 # return the decision based on the applicant's credit score, monthly income and missed payments
